@@ -2,8 +2,10 @@ const   gulp = require('gulp'),
         sass = require('gulp-sass'),
         autoprefixer = require('gulp-autoprefixer'),
         csso = require('gulp-csso'),
-        babel = require('gulp-babel'),
+        babelify = require('babelify'),
         uglify = require('gulp-uglify'),
+        concat = require('gulp-concat'),
+        browserify = require('gulp-browserify'),
         notify = require('gulp-notify'),
         gulpIf = require('gulp-if'),
         runSequence = require('run-sequence').use(gulp),
@@ -21,7 +23,17 @@ const AUTOPREFIXER_BROWSERS = [
   'bb >= 10'
 ];
 
-const prod = process.env.NODE_ENV === 'production';
+const   prod = process.env.NODE_ENV === 'production',
+        opts = {
+            entries: './js/app.js',
+            debug: true,
+            cache: {},
+            transform: [
+                babelify.configure({
+                    presets: ["env"],
+                })
+            ]
+        };
 
 gulp.task('build-dev',() => runSequence('sass', 'js', 'browserSync', 'watch'));
 
@@ -34,15 +46,27 @@ gulp.task('sass', () =>{
         .pipe(sass().on('error',sass.logError))
         .pipe(autoprefixer({browsers: AUTOPREFIXER_BROWSERS}))
         .pipe(gulpIf(prod, csso()))
-        .pipe(gulp.dest('assets/css'))        
+        .pipe(gulp.dest('assets/css'))
+        .pipe(gulpIf(!prod, notify({
+            title: "Compilation SASS",
+            message: "Compilation des fichiers SASS réalisé avec Succés !"
+        })))       
 });
 
 gulp.task('js', () => {
-    return gulp.src(['src/js/app.js'])
-        .pipe(gulpIf(prod, babel({presets: ['@babel/env']})))
+    return gulp.src(['src/js/'])
+        .pipe(browserify(opts))
         .pipe(gulpIf(prod, uglify()))
+        .pipe(concat("app.js"))
         .pipe(gulp.dest('assets/js'))
-        .pipe(gulpIf(prod, notify('Build Success')))
+        .pipe(gulpIf(prod, notify({
+            title: "Build Success",
+            message: "Build de production réalisé avec succés !"
+        })))
+        .pipe(gulpIf(!prod, notify({
+            title: "Compilation JS",
+            message: "Compilation des fichiers JS réalisé avec Succés !"
+        })))
 });
 
 gulp.task('browserSync', function(){
