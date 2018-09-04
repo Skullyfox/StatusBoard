@@ -1,0 +1,14 @@
+.Card
+  height: 35vh
+  width: 15vw
+  margin: .5em
+  border-radius: .2em
+
+  box-shadow: 5px 5px 20px $black
+  background: $red
+  +clignAnim(1s)
+
+  &.on
+    background: $green
+  *
+    pointer-events: none

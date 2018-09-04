@@ -1,0 +1,71 @@
+/* Responssive */
+
+=mobile
+    @media screen and (max-width: 580px)
+        @content
+
+=tablet
+    @media screen and (min-width: 581px) and (max-width: 980px)
+        @content
+
+=desktop
+    @media screen and (min-width: 981px)
+        @content
+
+=hd
+    @media screen and (min-width: 1080px)
+        @content
+
+/* Displays*/
+=flex-column
+    display: flex
+    flex-direction: column
+=flex-row
+    display: flex
+    flex-direction: row
+
+=flex-JStartNoA
+    justify-content: flex-start
+
+=flex-JStartACenter
+    justify-content: flex-start
+    align-items: center
+
+=flex-fullCenter
+    justify-content: center
+    align-items: center 
+
+/* Grandients */
+
+=gradient-bg($direction,$color1,$color2)
+  background: linear-gradient($direction, $color1 0%, $color2 100%)
+
+/* Fonts */
+=font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg)
+	$src: null
+
+	$extmods: (eot: "?",svg: "#" + str-replace($name, " ", "_"))
+
+	$formats: (otf: "opentype",ttf: "truetype")
+
+	@each $ext in $exts 
+		$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext)
+		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext)
+		$src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma)
+	
+
+	@font-face 
+		font-family: quote($name)
+		font-style: $style
+		font-weight: $weight
+		src: $src
+
+/* keyframes */
+=clignAnim($time)
+    @keyframes clignAnim
+        from
+            filter: brightness(100%)
+        to
+            filter: brightness(120%)
+
+    animation: clignAnim $time alternate infinite
