@@ -1,3 +1,11 @@
 .row
   display: flex
   flex-direction: row
+  +tablet
+    padding: 10px
+    display: grid
+    grid-template-columns: repeat(2,1fr)
+  +mobile
+    padding: 5px 
+    display: grid
+    grid-template-columns: 1fr
