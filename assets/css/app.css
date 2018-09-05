@@ -52,6 +52,37 @@ a, a:hover, a:visited {
     Provided a range of browser width and font sizes, the typography of your app will automaticcaly and progressively change its size.
     @author Daria <lo.pennequin@gmail.com>
     ==========================*/
+@-webkit-keyframes bgOn {
+  from {
+    background: rgba(16, 172, 132, 0.1);
+    border-color: rgba(16, 172, 132, 0.5); }
+  to {
+    background: rgba(16, 172, 132, 0.3);
+    border-color: rgba(16, 172, 132, 0.8); } }
+@keyframes bgOn {
+  from {
+    background: rgba(16, 172, 132, 0.1);
+    border-color: rgba(16, 172, 132, 0.5); }
+  to {
+    background: rgba(16, 172, 132, 0.3);
+    border-color: rgba(16, 172, 132, 0.8); } }
+
+@-webkit-keyframes bgOff {
+  from {
+    background: rgba(252, 92, 101, 0.1);
+    border-color: rgba(252, 92, 101, 0.5); }
+  to {
+    background: rgba(252, 92, 101, 0.3);
+    border-color: rgba(252, 92, 101, 0.8); } }
+
+@keyframes bgOff {
+  from {
+    background: rgba(252, 92, 101, 0.1);
+    border-color: rgba(252, 92, 101, 0.5); }
+  to {
+    background: rgba(252, 92, 101, 0.3);
+    border-color: rgba(252, 92, 101, 0.8); } }
+
 /* Responssive */
 /* Displays*/
 /* Grandients */
@@ -80,33 +111,18 @@ a, a:hover, a:visited {
 
 .Card {
   display: grid;
-  grid-template-columns: 10% 90%;
+  grid-template-columns: 20% 80%;
   height: 100px;
   width: 250px;
   margin: .5em;
   border-radius: .2em;
   box-shadow: 5px 5px 20px #212121;
-  background: #fc5c65;
-  -webkit-animation: clignAnim 1s alternate infinite;
-          animation: clignAnim 1s alternate infinite; }
-
-@-webkit-keyframes clignAnim {
-  from {
-    -webkit-filter: brightness(100%);
-            filter: brightness(100%); }
-  to {
-    -webkit-filter: brightness(120%);
-            filter: brightness(120%); } }
-
-@keyframes clignAnim {
-  from {
-    -webkit-filter: brightness(100%);
-            filter: brightness(100%); }
-  to {
-    -webkit-filter: brightness(120%);
-            filter: brightness(120%); } }
+  border: 1px solid;
+  -webkit-animation: bgOff 1s alternate infinite;
+          animation: bgOff 1s alternate infinite; }
   .Card.on {
-    background: #10ac84; }
+    -webkit-animation: bgOn 1s alternate infinite;
+            animation: bgOn 1s alternate infinite; }
   .Card * {
     pointer-events: none; }
 

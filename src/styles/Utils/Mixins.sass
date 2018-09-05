@@ -61,11 +61,7 @@
 		src: $src
 
 /* keyframes */
-=clignAnim($time)
-    @keyframes clignAnim
-        from
-            filter: brightness(100%)
-        to
-            filter: brightness(120%)
-
-    animation: clignAnim $time alternate infinite
+=clignAnimOn($time)
+    animation: bgOn $time alternate infinite
+=clignAnimOff($time)
+    animation: bgOff $time alternate infinite

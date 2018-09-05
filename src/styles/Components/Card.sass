@@ -1,6 +1,6 @@
 .Card
   display: grid
-  grid-template-columns: 10% 90%
+  grid-template-columns: 20% 80%
 
   height: 100px
   width: 250px
@@ -8,10 +8,11 @@
   border-radius: .2em
 
   box-shadow: 5px 5px 20px $black
-  background: $red
-  +clignAnim(1s)
+  border: 1px solid
+  +clignAnimOff(1s)
 
   &.on
-    background: $green
+
+    +clignAnimOn(1s)
   *
     pointer-events: none
