@@ -159,12 +159,8 @@ a, a:hover, a:visited {
       padding: 5px; }
 
 .row {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row; }
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); }
   @media screen and (min-width: 581px) and (max-width: 980px) {
     .row {
       padding: 10px;
