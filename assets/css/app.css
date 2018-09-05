@@ -125,6 +125,38 @@ a, a:hover, a:visited {
             animation: bgOn 1s alternate infinite; }
   .Card * {
     pointer-events: none; }
+  .Card .CardLogo {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    font-size: 1.2em;
+    color: #b3becb; }
+  .Card .CardInfos {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    font-size: 1em;
+    color: #b3becb; }
+    .Card .CardInfos * {
+      padding: 5px; }
 
 .row {
   display: -webkit-flex;
@@ -146,4 +178,5 @@ a, a:hover, a:visited {
 
 body {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  font-family: sans-serif; }
